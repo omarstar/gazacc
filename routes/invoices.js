@@ -2,14 +2,16 @@ const router = require("express").Router();
 let db = require("../models/index");
 
 //get all invoices
-//create new invoice using body
-//delete invoice by :id
+//create new invoice using req.body
+//delete invoice by params:id
 //delete all invoices //testing purposes
 
 /**
  * @action RETURN all INVOICES[]
  * @route localhost:3000/invoice
  * @method GET
+ * @input NONE
+ * @output {serialNb, liter, value, date, companyid.name, fuelid.name, tankid.code}
  */
 router.route("/").get((req, res) => {
   db.Invoice.find()
@@ -66,8 +68,10 @@ router.route("/add").post(async (req, res) => {
 });
 /**
  * @action DELETE INVOICE BY params.ID
- * @route localhost:3000/invoice/del/;id
- * @method GET
+ * @route localhost:3000/invoice/del/:id
+ * @method DELETE
+ * @input params.id
+ * @output {count, ok} of objects deleted with status
  */
 router.route("/del/:id").delete(async (req, res) => {
   await db.Invoice.deleteOne({ _id: req.params.id })
@@ -78,6 +82,8 @@ router.route("/del/:id").delete(async (req, res) => {
  * @action DELETE ALL INVOICE RECORDS using req.body.confirm: true
  * @route localhost:3000/invoice/del
  * @method DELETE
+ * @input req.body{confirm: true}
+ * @output
  */
 router.route("/del/").delete(async (req, res) => {
   if (req.body.confirm) {

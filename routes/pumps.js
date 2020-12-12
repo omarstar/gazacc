@@ -19,7 +19,7 @@ router.route("/").get((req, res) => {
 });
 /**
  * @action RETURN ALL PUMPS BY FUEL TYPE in req.params
- * @route localhost:3000/pump
+ * @route localhost:3000/pump/:type
  * @method POST
  */
 router.route("/:type").get(async (req, res) => {
@@ -75,7 +75,7 @@ router.route("/edit/:type").put(async (req, res) => {
 });
 /**
  * @action DELETE PUMP BY PARAMS.ID
- * @route localhost:3000/pump/edit/:type
+ * @route localhost:3000/pump/edit/:id
  * @method DELETE
  */
 router.route("/del/:id").delete(async (req, res) => {
