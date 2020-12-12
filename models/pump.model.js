@@ -6,10 +6,6 @@ const PumpSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  rate: {
-    type: Number,
-    required: true,
-  },
   fuelType: { type: String, required: true },
 });
 

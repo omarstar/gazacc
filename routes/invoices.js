@@ -27,8 +27,8 @@ router.route("/").get((req, res) => {
 router.route("/add").post(async (req, res) => {
   console.log("req.body: ", req.body);
 
-  const { serialNb, date, companyName, fuelType, tankCode } = req.body;
-  const liter = Number(req.body.liter);
+  const { serialnbr, date, companyName, fuelType, tankCode } = req.body;
+  const litre = Number(req.body.litre);
   const value = Number(req.body.value);
 
   try {
@@ -41,9 +41,9 @@ router.route("/add").post(async (req, res) => {
     console.log("fuel ", fuel);
 
     const newInvoice = new db.Invoice({
-      serialNb,
+      serialnbr,
       date,
-      liter,
+      litre,
       value,
       fuelid: fuel._id,
       companyid: company._id,

@@ -4,7 +4,7 @@ const TankSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  capacity: {
+  fuelCapacity: {
     type: Number,
     required: true,
   },

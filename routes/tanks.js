@@ -45,7 +45,7 @@ router.route("/").post(async (req, res) => {
 router.route("/add").post(async (req, res) => {
   //define from req.body.keys to match model.keys
   const { code, fuelType } = req.body;
-  const capacity = Number(req.body.capacity);
+  const fuelCapacity = Number(req.body.fuelCapacity);
   const fuelLevel = Number(req.body.fuelLevel);
   //get the fuel id from the req.body.fuelType
   try {
@@ -59,7 +59,7 @@ router.route("/add").post(async (req, res) => {
           code,
           fuelTypeId: docFuel._id,
           fuelLevel,
-          capacity,
+          fuelCapacity,
         });
         console.log("new one: ", newTank);
         //save the new tank
@@ -123,7 +123,7 @@ const updateVolume = async (code, level, rule) => {
           break;
       }
 
-      const sts = getStatus(newLevel, docTank.capacity);
+      const sts = getStatus(newLevel, docTank.fuelCapacity);
       docTank.set({ status: sts });
       docTank.set({ fuelLevel: newLevel });
       await docTank.save();

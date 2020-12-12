@@ -40,7 +40,6 @@ router.route("/:type").get(async (req, res) => {
 router.route("/add").post(async (req, res) => {
   const { fuelType } = req.body;
   const counter = Number(req.body.counter);
-  const rate = Number(req.body.rate);
 
   // const fuel = await db.Fuel.findOne({ name: fuelType }).lean();
 

@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const InvoiceSchema = new mongoose.Schema({
-  serialNb: {
+  serialnbr: {
     type: String,
     required: true,
   },
-  liter: {
+  litre: {
     type: Number,
     required: true,
   },
